@@ -38,8 +38,24 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'jobs',
-    'projects'
+    'projects',
+    'storages'
 ]
+
+AWS_STORAGE_BUCKET_NAME = 'django-portfolio-sri'
+AWS_S3_REGION_NAME = 'us-east-1'  # e.g. us-east-2
+AWS_ACCESS_KEY_ID = 'AKIARCGSNRRICZUWM2MO'
+AWS_SECRET_ACCESS_KEY = 'JXaMVkClbLCaITdu+5vgXJI8EYAXtUk54aHiUnTO'
+
+# Tell django-storages the domain to use to refer to static files.
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_DEFAULT_ACL = None
+
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
